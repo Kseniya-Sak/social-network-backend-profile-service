@@ -34,4 +34,16 @@ public class ProfileServiceImpl implements ProfileService {
     public boolean existsByIdAndUserId(Long profileId, Long userId) {
         return profileRepository.existsByIdAndUserId(profileId, userId);
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public boolean existsById(Long profileId) {
+        return profileRepository.existsById(profileId);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Profile findById(Long profileId) {
+        return profileRepository.findById(profileId).get();
+    }
 }

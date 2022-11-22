@@ -11,4 +11,8 @@ public interface ProfileService {
     void deleteById(Long profileId);
 
     boolean existsByIdAndUserId(Long profileId, Long userId);
+
+    boolean existsById(Long profileId);
+
+    public Profile findById(Long profileId);
 }
