@@ -1,5 +1,6 @@
 package kata.academy.eurekaprofileservice.service.impl;
 
+import java.util.Optional;
 import kata.academy.eurekaprofileservice.model.entity.Profile;
 import kata.academy.eurekaprofileservice.repository.ProfileRepository;
 import kata.academy.eurekaprofileservice.service.ProfileService;
@@ -37,13 +38,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Transactional(readOnly = true)
     @Override
-    public boolean existsById(Long profileId) {
-        return profileRepository.existsById(profileId);
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public Profile findById(Long profileId) {
-        return profileRepository.findById(profileId).get();
+    public Optional<Profile> findById(Long profileId) {
+        return profileRepository.findById(profileId);
     }
 }

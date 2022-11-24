@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.Positive;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Validated
@@ -61,9 +62,12 @@ public class ProfileRestController {
     }
 
     @GetMapping("/{profileId}")
-    ResponseEntity<Profile> getProfile(@PathVariable @Positive Long profileId) {
-        ApiValidationUtil.requireTrue(profileService.existsById(profileId),
-                String.format("Профиль с таким profileId %d не существует в базе данных", profileId));
-        return ResponseEntity.ok(profileService.findById(profileId));
+    public ResponseEntity<Profile> getProfile(@PathVariable @Positive Long profileId) {
+        Optional<Profile> profile = profileService.findById(profileId);
+
+        ApiValidationUtil.requireTrue(profile.isPresent(),
+                    String.format("Профиль с таким profileId %d не существует в базе данных", profileId));
+
+        return ResponseEntity.ok(profile.get());
     }
 }

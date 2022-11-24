@@ -2,6 +2,8 @@ package kata.academy.eurekaprofileservice.service;
 
 import kata.academy.eurekaprofileservice.model.entity.Profile;
 
+import java.util.Optional;
+
 public interface ProfileService {
 
     Profile addProfile(Profile profile);
@@ -12,7 +14,5 @@ public interface ProfileService {
 
     boolean existsByIdAndUserId(Long profileId, Long userId);
 
-    boolean existsById(Long profileId);
-
-    public Profile findById(Long profileId);
+    Optional<Profile> findById(Long profileId);
 }
