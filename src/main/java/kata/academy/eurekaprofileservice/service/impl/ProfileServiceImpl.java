@@ -16,13 +16,13 @@ public class ProfileServiceImpl implements ProfileService {
     private final ProfileRepository profileRepository;
 
     @Override
-    public Profile addProfile(Profile profile) {
-        return profileRepository.save(profile);
+    public void addProfile(Profile profile) {
+        profileRepository.save(profile);
     }
 
     @Override
-    public Profile updateProfile(Profile profile) {
-        return profileRepository.save(profile);
+    public void updateProfile(Profile profile) {
+        profileRepository.save(profile);
     }
 
     @Override

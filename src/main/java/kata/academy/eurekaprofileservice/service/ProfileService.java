@@ -6,9 +6,9 @@ import java.util.Optional;
 
 public interface ProfileService {
 
-    Profile addProfile(Profile profile);
+    void addProfile(Profile profile);
 
-    Profile updateProfile(Profile profile);
+    void updateProfile(Profile profile);
 
     void deleteById(Long profileId);
 
